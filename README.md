@@ -5,7 +5,7 @@ Intelligent Document Verification and Review Platform (React, FastAPI, MongoDB A
 
 ## Run backend (Windows PowerShell)
 ```powershell
-cd D:\VerifyFlow\backend
+cd "D:\INCHARA\Devops project\Verifyflow\backend"
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 pip install -r requirements.txt
@@ -15,12 +15,14 @@ pytest -q
 ```
 ## Run frontend
 ```powershell
-cd D:\VerifyFlow\frontend
+cd "D:\INCHARA\Devops project\Verifyflow\frontend"
 npm install
 npm run dev
 ```
 ## Docker
 ```powershell
-cd D:\VerifyFlow
+cd "D:\INCHARA\Devops project\Verifyflow"
 docker compose up --build
 ```
+
+> Project location: `D:\INCHARA\Devops project\Verifyflow`. The path contains a space, so always wrap it in double quotes in PowerShell.

@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: verifyflow-config
+data:
+  MONGODB_DB: "verifyflow"
+  CORS_ORIGINS: "http://localhost:8080"
+  MAX_UPLOAD_MB: "10"

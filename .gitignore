@@ -1,0 +1,19 @@
+# secrets
+.env
+*.env
+!.env.example
+k8s/secrets.yaml
+# python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+# node
+node_modules/
+dist/
+# os / ide
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

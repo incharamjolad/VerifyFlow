@@ -1,28 +1,43 @@
 # VerifyFlow
 Intelligent Document Verification and Review Platform (React, FastAPI, MongoDB Atlas/GridFS, OCR, SHA-256 duplicate detection, human review, hash-chained audit log, Docker, Kubernetes/Minikube, Jenkins).
 
-**Status:** Phase 0-1 scaffold. Backend has `/health` and `/ready`; frontend is a placeholder; Docker, k8s and Jenkins files are starter versions. Remaining phases are built with Antigravity following the guide PDF.
+## Demo Credentials (Seeded)
+All demo accounts use password: `VerifyDemo#2026!x`
 
-## Run backend (Windows PowerShell)
+| Role | Email | Capabilities |
+| :--- | :--- | :--- |
+| **Admin** | `admin@verifyflow.com` | User role management, system analytics, review & audit access |
+| **Reviewer** | `reviewer@verifyflow.com` | Review queue, split-screen PDF preview, approve/reject/corrections |
+| **Auditor** | `auditor@verifyflow.com` | Read-only audit ledger, cryptographic hash-chain verification |
+| **Applicant** | `applicant@verifyflow.com` | PDF upload, document history, correction revision resubmission |
+
+---
+
+## Run Locally (Windows PowerShell)
+
+### 1. Seed Database (Optional / First Run)
 ```powershell
-cd "D:\INCHARA\Devops project\Verifyflow\backend"
-python -m venv .venv
+cd "d:\INCHARA\Devops project\Verifyflow\VerifyFlow-repo (1)\Verifyflow\backend"
 .\.venv\Scripts\Activate.ps1
-pip install -r requirements.txt
-copy .env.example .env   # then edit with your values
-uvicorn app.main:app --reload
-pytest -q
+python seed.py
 ```
-## Run frontend
+
+### 2. Run Backend (Port 8000)
 ```powershell
-cd "D:\INCHARA\Devops project\Verifyflow\frontend"
-npm install
+cd "d:\INCHARA\Devops project\Verifyflow\VerifyFlow-repo (1)\Verifyflow\backend"
+.\.venv\Scripts\Activate.ps1
+uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+```
+
+### 3. Run Frontend (Port 5173 with /api proxy to 8000)
+```powershell
+cd "d:\INCHARA\Devops project\Verifyflow\VerifyFlow-repo (1)\Verifyflow\frontend"
 npm run dev
 ```
-## Docker
-```powershell
-cd "D:\INCHARA\Devops project\Verifyflow"
-docker compose up --build
-```
 
-> Project location: `D:\INCHARA\Devops project\Verifyflow`. The path contains a space, so always wrap it in double quotes in PowerShell.
+### 4. Run Pytest Suite
+```powershell
+cd "d:\INCHARA\Devops project\Verifyflow\VerifyFlow-repo (1)\Verifyflow\backend"
+.\.venv\Scripts\Activate.ps1
+pytest tests -v
+```
